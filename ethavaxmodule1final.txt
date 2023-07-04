@@ -1,0 +1,23 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+
+contract AssertionContract {
+    function requireStatement(uint256 x, uint256 y) public pure returns (uint256) {
+        require(x > y, "x must be greater than y");
+        return x - y;
+    }
+
+    function assertStatement(uint256 x) public pure returns (uint256) {
+        uint256 y = 10;
+        assert(x > y);
+        return x - y;
+    }
+
+    function revertStatement() public pure {
+        uint256 x = 5;
+        uint256 y = 10;
+        if (x <= y) {
+            revert("x must be greater than y");
+        }
+    }
+}
